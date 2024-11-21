@@ -47,13 +47,15 @@ export function Navbar({
 
 	return (
 		<nav style={{backgroundColor:"black", color:"white", display: "flex", alignItems:"center"}}>
-			<Image style={{width:50, height:50}}
-				src="/logo.png"
-				alt="rentwave logo"
-				width={180}
-				height={180}
-				priority
-			/>
+			<a href="/">
+				<Image style={{width:50, height:50}}
+					src="/logo.png"
+					alt="rentwave logo"
+					width={180}
+					height={180}
+					priority
+				/>
+			</a>
 			{links.map(l => <NavbarLink {...l}></NavbarLink>)}
 		</nav>
 	);
