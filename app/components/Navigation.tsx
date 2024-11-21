@@ -22,7 +22,7 @@ function NavbarLink({
 	onClick?: MouseEventHandler<HTMLAnchorElement>;
 }) {
 	return (
-		<Link style={{margin:20, alignContent:"center"}}
+		<Link style={{margin:20}}
 			onClick={onClick}
 			href={path}>
 			{name}
@@ -46,8 +46,8 @@ export function Navbar({
 	let [itemsExpanded, setExpanded] = useState<boolean>(false);
 
 	return (
-		<nav style={{backgroundColor:"black", color:"white"}}>
-			<Image style={{width:100, height:100}}
+		<nav style={{backgroundColor:"black", color:"white", display: "flex", alignItems:"center"}}>
+			<Image style={{width:50, height:50}}
 				src="/logo.png"
 				alt="rentwave logo"
 				width={180}
