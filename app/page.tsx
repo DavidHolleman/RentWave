@@ -1,12 +1,34 @@
 import Image from "next/image";
-import styles from "./page.module.css";
+import "./globals.css";
+import { Navbar } from "./components/Navigation";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
+    <div>
+      <Navbar style={{ height: "100vh"}}
+        links={(() => {
+          let elements: { name: string; path: string }[] = [];
+          elements.push({
+            name: "Post an Item", //be better at names
+            path: "/postitem"
+          });
+          elements.push({
+            name: "Messages",
+            path: "/message"
+          });
+          elements.push({
+            name: "Login",
+            path: "/login"
+          });
+          elements.push({
+            name: "Logout",
+            path: "/logout"
+          });
+          return elements;
+        })()}
+      />
+      <main style={{ minHeight: "95vh" }}>
         <Image
-          className={styles.logo}
           src="/logo.png"
           alt="rentwave logo"
           width={180}
