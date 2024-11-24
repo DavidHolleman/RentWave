@@ -36,20 +36,36 @@ export default function RootLayout({
           links={(() => {
             let elements: { name: string; path: string }[] = [];
             elements.push({
-              name: "Post an Item", //be better at names
-              path: "/postitem"
+              name: "Search",
+              path: "/item"
+            });
+            elements.push({
+              name: "Post an Item",
+              path: "/item/post"
+            });
+            elements.push({
+              name: "Reviews",
+              path: "/review"
             });
             elements.push({
               name: "Messages",
               path: "/message"
             });
             elements.push({
+              name: "Create account",
+              path: "/user/create"
+            });
+            elements.push({
               name: "Login",
-              path: "/login"
+              path: "/user/login"
+            });
+            elements.push({
+              name: "Your account",
+              path: "/user"
             });
             elements.push({
               name: "Logout",
-              path: "/logout"
+              path: "/user/logout"
             });
             return elements;
           })()}
