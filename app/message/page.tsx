@@ -1,8 +1,5 @@
-
 export default function Message() {
-    return (
-          
-          <p> Messages </p>
-        
-    );
-  }
+      return (
+            <p> Messages Page </p>
+      );
+}
