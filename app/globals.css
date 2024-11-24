@@ -28,3 +28,73 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+.link {
+  text-decoration-line: underline;
+}
+
+.box {
+  width:25rem;
+  margin:auto;
+  padding: 1rem;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+  padding: 0.5rem;
+}
+
+.form {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  width: 100%;
+}
+
+input, button, textarea, select {
+  border-radius: 5px;
+  padding: 1rem 1.2rem 1rem 1.2rem;
+}
+button {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	font-size: 1rem !important;
+  line-height: 1.5rem !important;
+	font-weight: 500 !important;
+}
+input, textarea, select {
+  border: 0px;
+  font-weight: normal;
+  background-color: rgb(var(--background-rgb));
+}
+input, textarea, select {
+	outline: solid 1px #d1d5db;
+}
+select {
+	padding-right: 10px;
+}
+input, textarea, button, select {
+  display: block;
+  width: auto;
+  width: -moz-available;
+  color: rgb(64, 64, 64);
+  margin-bottom: 1rem;
+}
+input[type="submit"], button {
+  background-color: #303030;
+  color: white;
+  font-weight: bold;
+}
+button:hover, input[type="submit"]:hover, select:hover{
+  cursor: pointer;
+}
+label {
+	display: block;
+	margin-bottom: 8px;
+	font-weight: 500;
+	font-size: 0.875rem /* 14px */;
+  line-height: 1.25rem /* 20px */;
+	color: rgb(75, 85, 99)
+}

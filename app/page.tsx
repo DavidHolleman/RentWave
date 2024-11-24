@@ -1,5 +1,5 @@
 import Image from "next/image";
-import "./globals.css";
+import "@/app/globals.css";
 
 export default function Home() {
   return (
@@ -12,7 +12,7 @@ export default function Home() {
           height={180}
           priority
         />
-        <p> Welcome to RentWave! </p>
+        <h2> Welcome to RentWave! </h2>
       </main>
     </div>
   );
