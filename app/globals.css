@@ -29,6 +29,58 @@ a {
   text-decoration: none;
 }
 
+.fillheight {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+.fillwidth {
+  display: flex;
+  flex-flow: row;
+}
+
+.leftcolumn {
+  flex: 25%;
+  border-collapse: collapse;
+  border: 2px solid gray;
+  height: 100%;
+}
+.rightcolumn {
+  flex: 75%;
+  border: 2px solid gray;
+  height: 100%;
+}
+
+table {
+  width: 99%;
+}
+.person {
+  border: 2px solid gray;
+}
+.message {
+  width: 100%;
+  margin: 5px;
+  border: 2px solid gray;
+  border-radius: 10px;
+  background-color: lightgrey;
+}
+.stack {
+  display: flex;
+  padding: 5px;
+}
+.inline {
+  display: -ms-inline-grid;
+  flex: 1 1 100%;
+}
+.left {
+  text-align: left;
+  font-size: small;
+}
+.right {
+  text-align: right;
+  font-size: small;
+}
+
 .link {
   text-decoration-line: underline;
 }
