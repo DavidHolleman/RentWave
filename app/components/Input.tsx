@@ -57,23 +57,20 @@ export function InputBig({
 	name,
 	placeholder,
 	className,
-	style
 }: {
 	label?: string;
 	id: string;
 	name?: string;
-	placeholder: string;
+	placeholder?: string;
 	className?: string;
-	style?: CSSProperties;
 }): JSX.Element {
 	return (
-		<div
-			style={style}>
+		<div style={{width:"100%"}}>
 			{label && <p>{label}</p>}
-			<textarea
+			<textarea style={{width:"100%"}}
 				id={id}
 				name={name}
-				rows={4}
+				rows={6}
 				placeholder={placeholder}></textarea>
 		</div>
 	);
