@@ -16,6 +16,10 @@ function SubmitButton() {
 	);
 }
 
+function tryLogin(state: string, payload: FormData): string | Promise<string> {
+    throw new Error("Function not implemented.");
+}
+
 export default function Login() {
 	//note that Server component cannot return null or Class objects, only plain JSONs and primitive types
 	let [error, formAction] = useFormState<string, FormData>(tryLogin, "");
@@ -59,8 +63,4 @@ export default function Login() {
             </a>
         </div>
 	);
-}
-
-function tryLogin(state: string, payload: FormData): string | Promise<string> {
-    throw new Error("Function not implemented.");
 }

@@ -49,7 +49,7 @@ export function Navbar({
 	return (
 		<nav style={{backgroundColor:"black", color:"white", display: "flex", alignItems:"center"}}>
 			<a href="/">
-				<Image style={{width:50, height:50}}
+				<Image style={{width:55, height:55}}
 					src="/logo.png"
 					alt="rentwave logo"
 					width={180}

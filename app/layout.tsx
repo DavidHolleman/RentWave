@@ -32,7 +32,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
 
-        <Navbar style={{ height: "100vh"}}
+        <Navbar
           links={(() => {
             let elements: { name: string; path: string }[] = [];
             elements.push({
@@ -70,8 +70,9 @@ export default function RootLayout({
             return elements;
           })()}
         />
-        
-        {children}
+        <main>
+          {children}
+        </main>
       </body>
     </html>
   );

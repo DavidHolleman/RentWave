@@ -6,6 +6,7 @@
 html, body {
   max-width: 100vw;
   overflow-x: hidden;
+  height: 100vh;
 }
 
 body {
@@ -16,6 +17,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
   padding: 0;
   margin: 0;
+}
+
+nav {
+  height: 60px;
+}
+main {
+  height: calc(100vh - 60px);
 }
 
 * {
@@ -29,36 +37,29 @@ a {
   text-decoration: none;
 }
 
-.fillheight {
-  display: flex;
-  flex-flow: column;
-  height: 100%;
+table {
+  width: 100%;
 }
+
 .fillwidth {
   display: flex;
   flex-flow: row;
+  height: 100%;
 }
 
 .leftcolumn {
   flex: 25%;
   border-collapse: collapse;
-  border: 2px solid gray;
-  height: 100%;
+  border-right: 5px solid darkslategray;
 }
 .rightcolumn {
   flex: 75%;
-  border: 2px solid gray;
-  height: 100%;
 }
 
-table {
-  width: 99%;
-}
 .person {
-  border: 2px solid gray;
+  border-bottom: 2px solid gray;
 }
 .message {
-  width: 100%;
   margin: 5px;
   border: 2px solid gray;
   border-radius: 10px;
@@ -103,6 +104,15 @@ table {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   width: 100%;
+}
+
+.newMessage {
+  display: flex;
+  flex-flow: row;
+  padding: 0.5rem;
+  height: 75px;
+  width: 100%;
+  align-items: baseline;
 }
 
 input, button, textarea, select {
