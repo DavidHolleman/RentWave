@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Navbar } from "@/app/components/Navigation";
 import "@/app/globals.css";
 
-import {
-	Footer,
-	Navbar
-} from "@/app/components/Navigation";
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -32,7 +30,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
 
-        <Navbar style={{ height: "100vh"}}
+        <Navbar
           links={(() => {
             let elements: { name: string; path: string }[] = [];
             elements.push({
@@ -70,8 +68,9 @@ export default function RootLayout({
             return elements;
           })()}
         />
-        
-        {children}
+        <main>
+          {children}
+        </main>
       </body>
     </html>
   );

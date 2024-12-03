@@ -3,7 +3,6 @@
 import { Input } from "@/app/components/Input";
 import { useFormState, useFormStatus } from "react-dom";
 import Image from "next/image";
-import "@/app/globals.css";
 
 function SubmitButton() {
 	const { pending } = useFormStatus();
@@ -40,7 +39,7 @@ export default function Create() {
                 height={180}
                 priority
             />
-            <h1> Create an Account</h1>
+            <h1> Create an account</h1>
             <br />
             <div className="form">
                 <form action={formAction}>

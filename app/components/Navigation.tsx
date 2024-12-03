@@ -3,11 +3,7 @@
 import Image from "next/image";
 import {
 	CSSProperties,
-	DetailedHTMLProps,
-	Fragment,
-	HTMLAttributes,
 	MouseEventHandler,
-	useContext,
 	useState
 } from "react";
 
@@ -33,9 +29,7 @@ function NavbarLink({
 
 export function Navbar({
 	links,
-	includeIcon,
-	specialElements,
-	style
+	includeIcon
 }: {
 	links: { name: string; path: string }[];
 	includeIcon?: boolean;
@@ -49,7 +43,7 @@ export function Navbar({
 	return (
 		<nav style={{backgroundColor:"black", color:"white", display: "flex", alignItems:"center"}}>
 			<a href="/">
-				<Image style={{width:50, height:50}}
+				<Image style={{width:55, height:55}}
 					src="/logo.png"
 					alt="rentwave logo"
 					width={180}
@@ -59,12 +53,5 @@ export function Navbar({
 			</a>
 			{links.map(l => <NavbarLink {...l}></NavbarLink>)}
 		</nav>
-	);
-}
-
-export function Footer(): JSX.Element {
-	return (
-		<footer>
-		</footer>
 	);
 }

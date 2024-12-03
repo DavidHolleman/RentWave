@@ -1,9 +1,8 @@
 "use client";
 
 import { Input, InputBig } from "@/app/components/Input";
-import "@/app/globals.css";
 import Image from "next/image";
-import { useFormStatus } from "react-dom";
+import { useFormState, useFormStatus } from "react-dom";
 
 function PostButton() {
 	const { pending } = useFormStatus();
@@ -16,7 +15,13 @@ function PostButton() {
 	);
 }
 
+function tryPost(state: string, payload: FormData): string | Promise<string> {
+    throw new Error("Function not implemented.");
+}
+
 export default function Create() {
+    //note that Server component cannot return null or Class objects, only plain JSONs and primitive types
+    let [error, formAction] = useFormState<string, FormData>(tryPost, "");
 
 	return (
         <div className="box">
@@ -27,7 +32,7 @@ export default function Create() {
                 height={180}
                 priority
             />
-            <h1> Post Item </h1>
+            <h1> Post an item </h1>
             <br />
             <div className="form">
                     <Input
@@ -35,10 +40,12 @@ export default function Create() {
                         type="text"
                         id="name"
                         name="name"
+                        placeholder="Enter item name"
                         required={true}
                     />
                     <label htmlFor="category">Choose a Category:</label>
                     <select name="category" id="category">
+                        <option value="" disabled selected>Select a category</option>
                         <option value="books">Books</option>
                         <option value="clothing">Clothing</option>
                         <option value="electronics">Electronics</option>

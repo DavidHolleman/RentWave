@@ -3,7 +3,6 @@
 import { Input } from "@/app/components/Input";
 import { useFormState, useFormStatus } from "react-dom";
 import Image from "next/image";
-import "@/app/globals.css";
 
 function SubmitButton() {
 	const { pending } = useFormStatus();
@@ -14,6 +13,10 @@ function SubmitButton() {
 			value={pending ? "Singing in" : "Sign in"}
 		/>
 	);
+}
+
+function tryLogin(state: string, payload: FormData): string | Promise<string> {
+    throw new Error("Function not implemented.");
 }
 
 export default function Login() {
@@ -59,8 +62,4 @@ export default function Login() {
             </a>
         </div>
 	);
-}
-
-function tryLogin(state: string, payload: FormData): string | Promise<string> {
-    throw new Error("Function not implemented.");
 }
