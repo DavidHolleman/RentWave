@@ -2,7 +2,6 @@
 
 import { Input } from "@/app/components/Input";
 import { useFormState, useFormStatus } from "react-dom";
-import "@/app/globals.css";
 
 function SubmitButton() {
 	const { pending } = useFormStatus();

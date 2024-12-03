@@ -3,7 +3,6 @@ import localFont from "next/font/local";
 import "@/app/globals.css";
 
 import {
-	Footer,
 	Navbar
 } from "@/app/components/Navigation";
 

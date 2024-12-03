@@ -107,11 +107,13 @@ table {
 }
 
 .newMessage {
+  position:fixed;
+  bottom:0;
+  width: 75%;
   display: flex;
   flex-flow: row;
   padding: 0.5rem;
   height: 75px;
-  width: 100%;
   align-items: baseline;
 }
 
