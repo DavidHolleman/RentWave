@@ -39,7 +39,7 @@ export default function Create() {
                 height={180}
                 priority
             />
-            <h1> Create an Account</h1>
+            <h1> Create an account</h1>
             <br />
             <div className="form">
                 <form action={formAction}>

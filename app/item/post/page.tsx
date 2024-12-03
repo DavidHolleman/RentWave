@@ -32,7 +32,7 @@ export default function Create() {
                 height={180}
                 priority
             />
-            <h1> Post Item </h1>
+            <h1> Post an item </h1>
             <br />
             <div className="form">
                     <Input
@@ -40,6 +40,7 @@ export default function Create() {
                         type="text"
                         id="name"
                         name="name"
+                        placeholder="Enter item name"
                         required={true}
                     />
                     <label htmlFor="category">Choose a Category:</label>
