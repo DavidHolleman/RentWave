@@ -4,7 +4,7 @@ import { Input, InputBig } from "@/app/components/Input";
 import Image from "next/image";
 import { useFormState, useFormStatus } from "react-dom";
 
-function PostButton() {
+function PostItemButton() {
 	const { pending } = useFormStatus();
 	return (
 		<input
@@ -15,13 +15,13 @@ function PostButton() {
 	);
 }
 
-function tryPost(state: string, payload: FormData): string | Promise<string> {
+function tryPostItem(state: string, payload: FormData): string | Promise<string> {
     throw new Error("Function not implemented.");
 }
 
 export default function Create() {
     //note that Server component cannot return null or Class objects, only plain JSONs and primitive types
-    let [error, formAction] = useFormState<string, FormData>(tryPost, "");
+    let [error, formAction] = useFormState<string, FormData>(tryPostItem, "");
 
 	return (
         <div className="box">
@@ -57,7 +57,7 @@ export default function Create() {
                         id="description"
                         name="description"
                     />
-                    <PostButton />
+                    <PostItemButton />
             </div>
         </div>
 	);

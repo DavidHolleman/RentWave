@@ -106,7 +106,6 @@ table {
   padding-bottom: 0.5rem;
   width: 100%;
 }
-
 .newMessage {
   position:fixed;
   bottom:0;
@@ -114,6 +113,12 @@ table {
   display: flex;
   flex-flow: row;
   padding: 0.5rem;
+  height: 75px;
+  align-items: baseline;
+}
+.search {
+  display: flex;
+  flex-flow: row;
   height: 75px;
   align-items: baseline;
 }
