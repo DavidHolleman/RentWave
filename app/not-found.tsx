@@ -1,16 +1,10 @@
 import ErrorPrompt from "./components/ErrorPrompt";
-import Image from "next/image";
+import RentWaveLogo from "@/app/components/RentWaveLogo";
 
 export default function NotFound() {
 	return (
 		<div className="box">
-			<Image className="center"
-                src="/logo.png"
-                alt="rentwave logo"
-                width={180}
-                height={180}
-                priority
-            />
+			<RentWaveLogo />
 			<div className="center">
 				<ErrorPrompt
 					code={"404"}

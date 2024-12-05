@@ -2,7 +2,7 @@
 
 import { Input } from "@/app/components/Input";
 import { useFormState, useFormStatus } from "react-dom";
-import Image from "next/image";
+import RentWaveLogo from "@/app/components/RentWaveLogo";
 
 function SubmitButton() {
 	const { pending } = useFormStatus();
@@ -32,13 +32,7 @@ export default function Create() {
 
 	return (
         <div className="box">
-            <Image className="center"
-                src="/logo.png"
-                alt="rentwave logo"
-                width={180}
-                height={180}
-                priority
-            />
+            <RentWaveLogo />
             <h1> Create an account</h1>
             <br />
             <div className="form">

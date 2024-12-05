@@ -1,7 +1,7 @@
 "use client";
 import { Input } from "@/app/components/Input";
 import { useFormState, useFormStatus } from "react-dom";
-import Image from "next/image";
+import RentWaveLogo from "@/app/components/RentWaveLogo";
 
 function SubmitButton() {
 	const { pending } = useFormStatus();
@@ -24,13 +24,7 @@ export default function Home() {
   return (
     <div>
       <div className="box">
-        <Image className="center"
-          src="/logo.png"
-          alt="rentwave logo"
-          width={180}
-          height={180}
-          priority
-        />
+        <RentWaveLogo />
         <h1 className="center">RentWave</h1>
         <h2 className="center">A Global Renting Solution</h2>
             
