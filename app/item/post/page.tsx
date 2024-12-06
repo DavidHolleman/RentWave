@@ -37,7 +37,7 @@ export default function Create() {
                         placeholder="Enter item name"
                         required={true}
                     />
-                    <label htmlFor="category">Choose a Category:</label>
+                    <label htmlFor="category">Category</label>
                     <select name="category" id="category">
                         <option value="" disabled selected>Select a category</option>
                         <option value="books">Books</option>
@@ -50,6 +50,7 @@ export default function Create() {
                         label="Description"
                         id="description"
                         name="description"
+                        placeholder="Enter a description"
                     />
                     <PostItemButton />
             </div>

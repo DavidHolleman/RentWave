@@ -34,7 +34,7 @@ export function Input({
 
 	return (
 		<div style={{width:"100%"}}>
-			<label style={{color:"rgb(75 85 99)"}}>{label}</label>
+			<label>{label}</label>
 			<input style={{width:"100%"}}
 				required={required}
 				id={id}
@@ -66,12 +66,13 @@ export function InputBig({
 }): JSX.Element {
 	return (
 		<div style={{width:"100%"}}>
-			{label && <p>{label}</p>}
-			<textarea style={{width:"100%"}}
+			<label>{label}</label>
+			<textarea style={{width:"100%", fontFamily:"inherit"}}
 				id={id}
 				name={name}
 				rows={6}
-				placeholder={placeholder}></textarea>
+				placeholder={placeholder}>
+			</textarea>
 		</div>
 	);
 }
