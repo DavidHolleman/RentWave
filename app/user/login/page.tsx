@@ -3,7 +3,8 @@
 import { Input } from "@/app/components/Input";
 import { useFormState, useFormStatus } from "react-dom";
 import RentWaveLogo from "@/app/components/RentWaveLogo";
-
+import { tryLogin } from "@/app/user/user";
+ 
 function SubmitButton() {
 	const { pending } = useFormStatus();
 	return (
@@ -15,12 +16,7 @@ function SubmitButton() {
 	);
 }
 
-function tryLogin(state: string, payload: FormData): string | Promise<string> {
-    throw new Error("Function not implemented.");
-}
-
 export default function Login() {
-	//note that Server component cannot return null or Class objects, only plain JSONs and primitive types
 	let [error, formAction] = useFormState<string, FormData>(tryLogin, "");
 
 	return (

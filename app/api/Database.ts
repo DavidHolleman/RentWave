@@ -1,13 +1,10 @@
-const mysql = require('mysql2');
+import mysql from 'mysql2/promise';
 
-const pool = mysql.createPool({
+const sql = await mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: 'password',
-  database: 'rentwave',
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0
+  database: 'rentwave'
 });
 
-module.exports = pool;
+export default sql;

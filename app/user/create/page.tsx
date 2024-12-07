@@ -3,6 +3,7 @@
 import { Input } from "@/app/components/Input";
 import { useFormState, useFormStatus } from "react-dom";
 import RentWaveLogo from "@/app/components/RentWaveLogo";
+import { tryCreateAccount } from "@/app/user/user";
 
 function SubmitButton() {
 	const { pending } = useFormStatus();
@@ -15,7 +16,7 @@ function SubmitButton() {
 	);
 }
 
-async function clientSideValidation(prevState: string, formData: FormData) {
+async function clientSideValidation(state: string, formData: FormData) {
 	let password = formData.get("password");
 	let confirmPassword = formData.get("confirm-password");
 
@@ -23,11 +24,10 @@ async function clientSideValidation(prevState: string, formData: FormData) {
 		return "Passwords do not match!";
 	}
 
-	throw new Error("Function not implemented.");
+	return await tryCreateAccount(state, formData);
 }
 
 export default function Create() {
-	//note that Server component cannot return null or Class objects, only plain JSONs and primitive types
 	let [error, formAction] = useFormState<string, FormData>(clientSideValidation, "");
 
 	return (
