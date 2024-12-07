@@ -3,6 +3,7 @@
 import { Input, InputBig } from "@/app/components/Input";
 import { useFormState, useFormStatus } from "react-dom";
 import RentWaveLogo from "@/app/components/RentWaveLogo";
+import { tryPostItem, tryGetCategories } from "@/app/item/item";
 
 function PostItemButton() {
 	const { pending } = useFormStatus();
@@ -15,12 +16,7 @@ function PostItemButton() {
 	);
 }
 
-function tryPostItem(state: string, payload: FormData): string | Promise<string> {
-    throw new Error("Function not implemented.");
-}
-
-export default function Create() {
-    //note that Server component cannot return null or Class objects, only plain JSONs and primitive types
+export default function PostItem() {
     let [error, formAction] = useFormState<string, FormData>(tryPostItem, "");
 
 	return (
@@ -29,6 +25,7 @@ export default function Create() {
             <h1> Post an item </h1>
             <br />
             <div className="form">
+                <form action={formAction}>
                     <Input
                         label="Name"
                         type="text"
@@ -53,6 +50,7 @@ export default function Create() {
                         placeholder="Enter a description"
                     />
                     <PostItemButton />
+                </form>
             </div>
         </div>
 	);
