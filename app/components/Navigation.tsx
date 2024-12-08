@@ -51,7 +51,7 @@ export function Navbar({
 					priority
 				/>
 			</a>
-			{links.map(l => <NavbarLink {...l}></NavbarLink>)}
+			{links.map(l => <NavbarLink key={crypto.randomUUID()} {...l}></NavbarLink>)}
 		</nav>
 	);
 }

@@ -10,9 +10,11 @@
   },
   "dependencies": {
     "mysql2": "^3.11.5",
-    "next": "^14.2.12",
-    "react": "^18",
-    "react-dom": "^18"
+    "net": "^1.0.2",
+    "next": "^15.0.0-rc.1",
+    "react": "^19.0.0-rc.1",
+    "react-dom": "^19.0.0-rc.1",
+    "tls": "^0.0.1"
   },
   "devDependencies": {
     "@types/node": "^20",
