@@ -92,6 +92,13 @@ table {
   margin:auto;
   padding: 1rem;
 }
+.boxone {
+  
+  max-width:fit-content;
+ 
+  margin:auto;
+  
+}
 
 .center {
   display: block;
@@ -167,4 +174,12 @@ label {
 	font-size: 0.875rem /* 14px */;
   line-height: 1.25rem /* 20px */;
 	color: rgb(75, 85, 99)
+}
+
+input[type=radio]{
+  display: none;
+}
+
+.star{
+  cursor: pointer;
 }
