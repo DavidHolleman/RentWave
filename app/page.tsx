@@ -1,7 +1,9 @@
 "use client";
 import { Input } from "@/app/components/Input";
-import { useFormState, useFormStatus } from "react-dom";
+import { useActionState } from "react";
+import { useFormStatus } from "react-dom";
 import RentWaveLogo from "@/app/components/RentWaveLogo";
+
 
 function SubmitButton() {
 	const { pending } = useFormStatus();
@@ -19,7 +21,7 @@ function trySearch(state: string, payload: FormData): string | Promise<string> {
 }
 
 export default function Home() {
-  let [error, formAction] = useFormState<string, FormData>(trySearch, "");
+  let [error, formAction] = useActionState<string, FormData>(trySearch, "");
 
   return (
     <div>

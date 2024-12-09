@@ -2,7 +2,8 @@
 
 import { InputBig } from "@/app/components/Input";
 import { useState } from "react";
-import { useFormState, useFormStatus } from "react-dom";
+import { useActionState } from "react";
+import { useFormStatus } from "react-dom";
 import { FaStar } from 'react-icons/fa'
 
 function PostReviewButton() {
@@ -21,7 +22,7 @@ function tryPostReview(state: string, payload: FormData): string | Promise<strin
 }
 
 export default function Review() {
-      let [error, formAction] = useFormState<string, FormData>(tryPostReview, "");
+      let [error, formAction] = useActionState<string, FormData>(tryPostReview, "");
       const colors = {
             orange: "#FFBA5A",
             grey: "#a9a9a9"
@@ -44,72 +45,68 @@ export default function Review() {
     setHoverValue(undefined)
   }
 
-      return (
-            <div style={styles.container}>
-            <h2> Leave a Review </h2>
-            <p> Items for you to review, Renters for you to review, and your reviews. </p> 
+  return (
+      <div style={styles.container}>
+      <h2> Leave a Review </h2>
+      <p> Items for you to review, Renters for you to review, and your reviews. </p> 
 
-            <div style={styles.stars}>
-              {stars.map((_, index) => {
-                return (
-                  <FaStar
-                    key={index}
-                    size={24}
-                    onClick={() => handleClick(index + 1)}
-                    onMouseOver={() => handleMouseOver(index + 1)}
-                    onMouseLeave={handleMouseLeave}
-                    color={(hoverValue || currentValue) > index ? colors.orange : colors.grey}
-                    style={{
-                      marginRight: 10,
-                      cursor: "pointer"
-                    }}
-                  />
-                )
-              })}
-            </div>
-            <textarea
-              placeholder="We appreciate your response!"
-              style={styles.textarea}
+      <div style={styles.stars}>
+        {stars.map((_, index) => {
+          return (
+            <FaStar
+              key={index}
+              size={24}
+              onClick={() => handleClick(index + 1)}
+              onMouseOver={() => handleMouseOver(index + 1)}
+              onMouseLeave={handleMouseLeave}
+              color={(hoverValue || currentValue) > index ? colors.orange : colors.grey}
+              style={{
+                marginRight: 10,
+                cursor: "pointer"
+              }}
             />
+          )
+        })}
+      </div>
+      <textarea
+        placeholder="We appreciate your response!"
+        style={styles.textarea}
+      />
+
+      <button
+        style={styles.button}
+      >
+        Submit
+      </button>
       
-            <button
-              style={styles.button}
-            >
-              Submit
-            </button>
-            
-          </div>
-        );
-      };
-      
-      
-      const styles = {
-        container: {
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center"
-        },
-        stars: {
-          display: "flex",
-          flexDirection: "row",
-        },
-        textarea: {
-          border: "1px solid #a9a9a9",
-          borderRadius: 5,
-          padding: 10,
-          margin: "20px 0",
-          minHeight: 100,
-          width: 300
-        },
-        button: {
-          border: "1px solid #a9a9a9",
-          borderRadius: 5,
-          width: 300,
-          padding: 10,
-        }
-      
-      };
+    </div>
+  );
+};
       
       
-            
-   
+const styles = {
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center"
+  },
+  stars: {
+    display: "flex",
+    flexDirection: "row",
+  },
+  textarea: {
+    border: "1px solid #a9a9a9",
+    borderRadius: 5,
+    padding: 10,
+    margin: "20px 0",
+    minHeight: 100,
+    width: 300
+  },
+  button: {
+    border: "1px solid #a9a9a9",
+    borderRadius: 5,
+    width: 300,
+    padding: 10,
+  }
+
+};

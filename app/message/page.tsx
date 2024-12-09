@@ -1,7 +1,8 @@
 "use client";
 
 import { Input } from "@/app/components/Input";
-import { useFormState, useFormStatus } from "react-dom";
+import { useActionState } from "react";
+import { useFormStatus } from "react-dom";
 
 function SubmitButton() {
 	const { pending } = useFormStatus();
@@ -20,7 +21,7 @@ function tryMessage(state: string, payload: FormData): string | Promise<string> 
 
 export default function Message() {
       //note that Server component cannot return null or Class objects, only plain JSONs and primitive types
-      let [error, formAction] = useFormState<string, FormData>(tryMessage, "");
+      let [error, formAction] = useActionState<string, FormData>(tryMessage, "");
 
       return (
             <div className="fillwidth">

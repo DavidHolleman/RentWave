@@ -1,7 +1,8 @@
 "use client";
 
 import { Input } from "@/app/components/Input";
-import { useFormState, useFormStatus } from "react-dom";
+import { useActionState } from "react";
+import { useFormStatus } from "react-dom";
 import RentWaveLogo from "@/app/components/RentWaveLogo";
 import { tryCreateAccount } from "@/app/user/user";
 
@@ -28,7 +29,7 @@ async function clientSideValidation(state: string, formData: FormData) {
 }
 
 export default function Create() {
-	let [error, formAction] = useFormState<string, FormData>(clientSideValidation, "");
+	let [error, formAction] = useActionState<string, FormData>(clientSideValidation, "");
 
 	return (
         <div className="box">

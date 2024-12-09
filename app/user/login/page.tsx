@@ -1,7 +1,8 @@
 "use client";
 
 import { Input } from "@/app/components/Input";
-import { useFormState, useFormStatus } from "react-dom";
+import { useActionState } from "react";
+import { useFormStatus } from "react-dom";
 import RentWaveLogo from "@/app/components/RentWaveLogo";
 import { tryLogin } from "@/app/user/user";
  
@@ -17,7 +18,7 @@ function SubmitButton() {
 }
 
 export default function Login() {
-	let [error, formAction] = useFormState<string, FormData>(tryLogin, "");
+	let [error, formAction] = useActionState<string, FormData>(tryLogin, "");
 
 	return (
         <div className="box">

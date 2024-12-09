@@ -1,11 +1,4 @@
-import {
-	CSSProperties,
-	ChangeEventHandler,
-	HTMLInputTypeAttribute,
-	use,
-	useEffect,
-	useState
-} from "react";
+import { ChangeEventHandler, HTMLInputTypeAttribute} from "react";
 
 export function Input({
 	label,
