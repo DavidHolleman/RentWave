@@ -48,6 +48,15 @@ export async function getSomeItems(param: string): Promise<Item[]> {
     return (items);
 }
 
+export async function getSingleItem(param: number): Promise<Item> {
+    const results = await db.query(
+        'SELECT * FROM `items` WHERE `id` = ?', [param]
+    );
+    const item = Array.from(results[0] as any).map((c) => (c as any) as Item)[0];
+    //console.log(item);
+    return (item);
+}
+
 export async function getUserRating(user:number) {
     const results = await db.query(
         'select AVG(re.rating) as CumulativeRating from reviews re join rentals rt on re.rentalId = rt.Id '+
