@@ -14,14 +14,16 @@ export default async function ItemSearch( params:any ) {
       </div>
 
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: "1.5rem", margin: "1.5rem"}}>
-        {await ItemSet.map(async (f) => (
-          <div className="item-card">
-            <h3>{f.Name}</h3>
-            <p><strong>Category:</strong> {f.Category}</p>
-            <p><strong>Owner:</strong> {f.Owner}</p>
-            <p><strong>Rating:</strong> {await getUserRating(f.Owner)}</p>
-            <p><strong>Description:</strong> {f.Description}</p>
-          </div>
+        {await ItemSet.map(async (item) => (
+          <a href={"/item/" + item.Id}>
+            <div className="item-card">
+              <h3>{item.Name}</h3>
+              <p><strong>Category:</strong> {item.Category}</p>
+              <p><strong>Owner:</strong> {item.Owner}</p>
+              <p><strong>Rating:</strong> {await getUserRating(item.Owner)}</p>
+              <p><strong>Description:</strong> {item.Description}</p>
+            </div>
+          </a>
         ))}
       </div>
     </div>
