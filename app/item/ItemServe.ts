@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import db from "@/app/Database";
-import Item from "@/app/item/ItemType";
+import { Item, Review } from "@/app/Types";
 
 export async function tryPostItem(state: string, formData: FormData) {
     try {
@@ -55,6 +55,15 @@ export async function getSingleItem(param: number): Promise<Item> {
     const item = Array.from(results[0] as any).map((c) => (c as any) as Item)[0];
     //console.log(item);
     return (item);
+}
+
+export async function getItemReviews(param: number): Promise<Review[]> {
+    const results = await db.query(
+        'SELECT * FROM `reviews` WHERE `RentalId` = ?', [param]
+    );
+    const reviews = Array.from(results[0] as any).map((c) => (c as any) as Review);
+    //console.log(item);
+    return (reviews);
 }
 
 export async function getUserRating(user:number) {

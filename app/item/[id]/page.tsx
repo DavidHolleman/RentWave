@@ -1,15 +1,16 @@
 "use server";
 
-import { getUserRating, getSingleItem } from "../ItemServe";
+import { getUserRating, getSingleItem, getItemReviews } from "../ItemServe";
+import { formatDate } from "@/app/Types";
 
 export default async function ItemPage( {params}: { params:{ id:number } } ) {
   let id = (await params).id;
   let item = await getSingleItem(id);
+  let reviews = await getItemReviews(id);
 
   if (!id || typeof id !== "string") {
     return <div>Loading...</div>;
   }
-
   if (!item) {
     return <div>Loading item details...</div>;
   }
@@ -23,6 +24,22 @@ export default async function ItemPage( {params}: { params:{ id:number } } ) {
         <p style={{ color: "#4b5563", marginBottom: "0.5rem" }}><strong>Rating:</strong> {await getUserRating(item.Owner)}/5</p>
         <p style={{ color: "#374151", marginBottom: "0.5rem" }}><strong>Description:</strong> {item.Description}</p>
       </div>
+
+      {reviews.length > 0 &&
+      <>
+        <h1 style={{ paddingTop: "2rem" }}>Reviews:</h1>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(1, minmax(0, 1fr))", gap: "1.5rem"}}>
+          {await reviews.map(async (f) => (
+            <div className="item-card">
+              <h3>{f.Name}</h3>
+              <p><strong>Author:</strong> {f.Author}</p>
+              <p><strong>Rating:</strong> {f.Rating}</p>
+              <p><strong>Time:</strong> {formatDate(f.Time)}</p>
+              <p><strong>Content:</strong> {f.Content}</p>
+            </div>
+          ))}
+        </div>
+      </>}
     </div>
   );
 }

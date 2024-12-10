@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import db from "@/app/Database";
-import Message from "@/app/message/MessageType";
+import Message from "@/app/Types";
 
 export async function sendMessage(state: string, formData: FormData) {
     try {

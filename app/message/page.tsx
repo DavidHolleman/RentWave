@@ -2,7 +2,7 @@
 
 import { getAllMessages } from "@/app/message/MessageServe";
 import MessageBar from "./MessageBar";
-import { formatDate } from "./MessageType";
+import { formatDate } from "@/app/Types";
 
 export default async function Message() {
       let ItemSet = await getAllMessages();
