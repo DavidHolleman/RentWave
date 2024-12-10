@@ -1,27 +1,11 @@
-"use client";
+"use sever";
 
-import { Input } from "@/app/components/Input";
-import { useActionState } from "react";
-import { useFormStatus } from "react-dom";
+import { getAllMessages } from "@/app/message/MessageServe";
+import MessageBar from "./MessageBar";
+import { formatDate } from "./MessageType";
 
-function SubmitButton() {
-	const { pending } = useFormStatus();
-	return (
-		<input
-			className="mb-0"
-			type="submit"
-			value={pending ? "Sending message" : "Send message"}
-		/>
-	);
-}
-
-function tryMessage(state: string, payload: FormData): string | Promise<string> {
-      throw new Error("Function not implemented.");
-  }
-
-export default function Message() {
-      //note that Server component cannot return null or Class objects, only plain JSONs and primitive types
-      let [error, formAction] = useActionState<string, FormData>(tryMessage, "");
+export default async function Message() {
+      let ItemSet = await getAllMessages();
 
       return (
             <div className="fillwidth">
@@ -41,40 +25,20 @@ export default function Message() {
                   </div>
                   
                   <div className="rightcolumn">
-                        <div className = "message">
-                              <div className="stack"> 
-                                    <p className="inline left">Sender 1</p>
-                                    <p className="inline right">Time 1</p>
-                              </div>
-                              <div className="stack"> <p>Message 1</p> </div>
+                        <div className="messages">
+                              {await ItemSet.map(async (f) => (
+                                    <div className = "message">
+                                          <div className="stack"> 
+                                                <p className="inline left">{f.Sender}</p>
+                                                <p className="inline right">{formatDate(f.Time)}</p>
+                                          </div>
+                                          <div className="stack"> <p>{f.Content}</p> </div>
+                                    </div>
+                              ))}
                         </div>
-                        <div className = "message">
-                              <div className="stack"> 
-                                    <p className="inline left">Sender 2</p>
-                                    <p className="inline right">Time 2</p>
-                              </div>
-                              <div className="stack"> <p>Message 2</p> </div>
-                        </div>
-                        <div className = "message">
-                              <div className="stack"> 
-                                    <p className="inline left">Sender 3</p>
-                                    <p className="inline right">Time 3</p>
-                              </div>
-                              <div className="stack"> <p>Message 3</p> </div>
-                        </div>
+                        
 
-                        <form action={formAction} className="newMessage">
-                              <Input
-                                    label=""
-                                    type="text"
-                                    id="message"
-                                    name="message"
-                                    required={true}
-                                    placeholder="Type a message"
-                              />
-                              <SubmitButton />
-                              <p> {error} </p>
-                        </form>
+                        <MessageBar />
                   </div>
             </div>
       );

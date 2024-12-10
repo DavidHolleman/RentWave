@@ -89,18 +89,34 @@ table {
   border-collapse: collapse;
   border-right: 5px solid darkslategray;
 }
-.rightcolumn {
-  flex: 75%;
-}
-
 .person {
   border-bottom: 2px solid gray;
+}
+
+.rightcolumn {
+  flex: 75%;
+  overflow-y: hidden;
+}
+.messages {
+  overflow-y: auto;
+  height: calc(100vh - 135px);
 }
 .message {
   margin: 5px;
   border: 2px solid gray;
   border-radius: 10px;
   background-color: lightgrey;
+}
+.newMessage {
+  position:fixed;
+  bottom:0;
+  width: 75%;
+  display: flex;
+  flex-flow: row;
+  padding: 0.5rem;
+  height: 75px;
+  align-items: baseline;
+  background-color: white;
 }
 .stack {
   display: flex;
@@ -145,16 +161,6 @@ table {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   width: 100%;
-}
-.newMessage {
-  position:fixed;
-  bottom:0;
-  width: 75%;
-  display: flex;
-  flex-flow: row;
-  padding: 0.5rem;
-  height: 75px;
-  align-items: baseline;
 }
 .search {
   display: flex;
