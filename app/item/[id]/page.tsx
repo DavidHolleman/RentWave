@@ -23,18 +23,19 @@ export default async function ItemPage( {params}: { params:{ id:number } } ) {
         <h1 style={{ fontSize: "1.875rem", fontWeight: "700", marginBottom: "1rem" }}>{item.Name}</h1>
         <p style={{ color: "#4b5563", marginBottom: "0.5rem" }}><strong>Category:</strong> {item.Category}</p>
         <p style={{ color: "#4b5563", marginBottom: "0.5rem" }}><strong>Owner:</strong> {item.Owner}</p>
-        <p style={{ color: "#4b5563", marginBottom: "0.5rem" }}><strong>Rating:</strong> {await getUserRating(item.Owner)}/5</p>
+        <p style={{ color: "#4b5563", marginBottom: "0.5rem" }}><strong>Rating:</strong> {await getUserRating(item.Owner)}</p>
         <p style={{ color: "#374151", marginBottom: "0.5rem" }}><strong>Description:</strong> {item.Description}</p>
       </div>
-      <StartRental itemid={id} owner={item.Owner} />
-
+      {item.Owner != "dhollema@pnw.edu" &&
+        <StartRental itemid={id} owner={item.Owner} />
+      }
+      
       {reviews.length > 0 &&
       <>
         <h1 style={{ paddingTop: "2rem" }}>Reviews:</h1>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(1, minmax(0, 1fr))", gap: "1.5rem"}}>
           {await reviews.map(async (f) => (
-            <div className="item-card">
-              <h3>{f.Name}</h3>
+            <div className="item-card" key={f.Time.getTime()}>
               <p><strong>Author:</strong> {f.Author}</p>
               <p><strong>Rating:</strong> {f.Rating}</p>
               <p><strong>Time:</strong> {formatDate(f.Time)}</p>

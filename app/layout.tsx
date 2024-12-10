@@ -55,6 +55,10 @@ export default function RootLayout({
               name: "Login",
               path: "/user/login"
             });
+            elements.push({
+              name: "Change Password",
+              path: "/user/change-password"
+            });
             // elements.push({
             //   name: "Your account",
             //   path: "/user"

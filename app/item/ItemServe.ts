@@ -59,7 +59,8 @@ export async function getSingleItem(param: number): Promise<Item> {
 
 export async function getItemReviews(param: number): Promise<Review[]> {
     const results = await db.query(
-        'SELECT * FROM `reviews` WHERE `RentalId` = ?', [param]
+        'SELECT RentalId, Author, Rating, Content, Time ' +
+        'FROM `reviews`, `rentals` WHERE rentals.Id = reviews.RentalId AND `ItemId` = ?', [param]
     );
     const reviews = Array.from(results[0] as any).map((c) => (c as any) as Review);
     //console.log(item);

@@ -28,7 +28,6 @@ export interface Review {
     Author: string;
     Rating: number;
     Content: string;
-    Name: string;
     Time: Date;
 }
 
