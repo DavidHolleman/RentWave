@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import db from "@/app/Database";
+import { UserInfo } from "os";
 
 export async function tryLogin(state: string, formData: FormData) {
     try {
@@ -32,4 +33,21 @@ export async function tryCreateAccount(state: string, formData: FormData) {
         return (e as Error).message;
     }
     redirect(`/`);
+}
+
+export async function getUserRating(user:number) {
+    const results = await db.query(
+        'select AVG(re.rating) as CumulativeRating from reviews re join rentals rt on re.rentalId = rt.Id '+
+        'where (case when rt.renter != re.author then rt.renter else rt.owner end) = ?',
+        [user]
+    );
+    return parseFloat((results[0] as any)[0].CumulativeRating);
+}
+
+export async function getUserInfo(user:number) {
+    const results = await db.query(
+        'select firstName, lastName, email, location from users',
+        [user]
+    );
+    return parseFloat((results[0] as any)[0].CumulativeRating);
 }
