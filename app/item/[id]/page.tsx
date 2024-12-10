@@ -1,46 +1,13 @@
-'use client';
+"use server";
 
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { getUserRating, getSingleItem } from "../ItemServe";
 
-interface ItemDetails {
-  id: string;
-  name: string;
-  category: string;
-  owner: string;
-  rating: number;
-  description: string;
-}
-
-/*const fetchItemDetails = async (id: string): Promise<ItemDetails> => {
-  const response = await fetch(`/api/items/${id}`);
-  if (!response.ok) {
-    throw new Error("Failed to fetch item details.");
-  }
-  return response.json();
-};*/
-
-export default function ItemPage() {
-  const router = useRouter();
-  const { id } = router.query; // Get the 'id' parameter from the URL
-
-  const [item, setItem] = useState<ItemDetails | null>(null);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (!id || typeof id !== "string") return;
-
-    //fetchItemDetails(id)
-      //.then((data) => setItem(data))
-      //.catch(() => setError("Failed to load item details."));
-  }, [id]);
+export default async function ItemPage( {params}: { params:{ id:number } } ) {
+  let id = (await params).id;
+  let item = await getSingleItem(id);
 
   if (!id || typeof id !== "string") {
     return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div className="text-red-500">{error}</div>;
   }
 
   if (!item) {
@@ -48,21 +15,13 @@ export default function ItemPage() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
-        <h1 className="text-3xl font-bold mb-4">{item.name}</h1>
-        <p className="text-gray-600 mb-2">
-          <strong>Category:</strong> {item.category}
-        </p>
-        <p className="text-gray-600 mb-2">
-          <strong>Owner:</strong> {item.owner}
-        </p>
-        <p className="text-gray-600 mb-2">
-          <strong>Rating:</strong> {item.rating}/5
-        </p>
-        <p className="text-gray-700 mt-4">
-          <strong>Description:</strong> {item.description}
-        </p>
+    <div style={{ maxWidth: "100%", margin: "0 auto", padding: "2rem 1rem" }}>
+      <div style={{ backgroundColor: "#ffffff", padding: "1.5rem", borderRadius: "0.5rem", boxShadow: "0 1px 3px 0 rgba(0,0,0,0.1)", border: "1px solid #e5e7eb" }}>
+        <h1 style={{ fontSize: "1.875rem", fontWeight: "700", marginBottom: "1rem" }}>{item.Name}</h1>
+        <p style={{ color: "#4b5563", marginBottom: "0.5rem" }}><strong>Category:</strong> {item.Category}</p>
+        <p style={{ color: "#4b5563", marginBottom: "0.5rem" }}><strong>Owner:</strong> {item.Owner}</p>
+        <p style={{ color: "#4b5563", marginBottom: "0.5rem" }}><strong>Rating:</strong> {await getUserRating(item.Owner)}/5</p>
+        <p style={{ color: "#374151", marginBottom: "0.5rem" }}><strong>Description:</strong> {item.Description}</p>
       </div>
     </div>
   );
