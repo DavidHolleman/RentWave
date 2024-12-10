@@ -3,11 +3,11 @@
 RentWave is a system to facilitate the rental of goods between users of the platform.
 
 Users can use the website to: 
-- Create an account / Login / Logout
-- List items in a variety of categories
-- Rent items
+- Create an account / Login / Logout / Change Password
+- Search for items in a variety of categories
+- Rent items from other users
 - Message other users about items
-- Write reviews related to past rentals.
+- Write reviews related to past rentals
 
 Project Report: https://docs.google.com/document/d/1v6i5F3iigGgFt_4nLyAMU0H7qEKmHC4T/edit?usp=sharing&ouid=114172747205478512791&rtpof=true&sd=true
 
