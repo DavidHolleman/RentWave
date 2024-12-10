@@ -1,42 +1,65 @@
 'use client';
 
 import { Input } from "@/app/components/Input";
-import { useFormState, useFormStatus } from "react-dom";
+import { useState } from "react";
 
-function SubmitButton() {
-  const { pending } = useFormStatus();
+function SubmitButton({ isPending }: { isPending: boolean }) {
   return (
     <input
       className="mb-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 cursor-pointer"
       type="submit"
-      value={pending ? "Searching..." : "Search"}
+      value={isPending ? "Searching..." : "Search"}
     />
   );
 }
 
-function trySearch(state: string, payload: FormData): string | Promise<string> {
-  return "Search results placeholder"; // Replace this with actual logic
+async function trySearch(query: string): Promise<string> {
+  // Simulate an API call or search logic
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("Search completed successfully.");
+    }, 1000);
+  });
 }
 
 export default function ItemSearch() {
-  const [error, formAction] = useFormState<string, FormData>(trySearch, "");
+  const [error, setError] = useState<string | null>(null);
+  const [isPending, setIsPending] = useState(false);
+  const [query, setQuery] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault(); // Prevent form reload
+    setIsPending(true);
+    setError(null);
+
+    try {
+      const result = await trySearch(query);
+      console.log(result); // Handle successful search logic
+    } catch (err) {
+      setError("An error occurred while searching.");
+    } finally {
+      setIsPending(false);
+    }
+  };
 
   return (
     <div className="container mx-auto px-4 py-8">
       {/* Search Section */}
       <div className="bg-gray-100 p-6 rounded shadow-lg text-center">
         <h1 className="text-3xl font-bold mb-6">Search for Items</h1>
-        <form action={formAction} className="flex flex-col md:flex-row items-center justify-center gap-4">
+        <form onSubmit={handleSubmit} className="flex flex-col md:flex-row items-center justify-center gap-4">
           <Input
             label=""
             type="text"
             id="search"
             name="search"
-            required={true}
+            required
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
             placeholder="Search items by name, category, or owner"
             className="flex-1 p-3 border border-gray-300 rounded"
           />
-          <SubmitButton />
+          <SubmitButton isPending={isPending} />
         </form>
         {error && <p className="text-red-500 mt-2">{error}</p>}
       </div>
@@ -48,9 +71,15 @@ export default function ItemSearch() {
           {/* Example Item Card */}
           <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
             <h3 className="text-xl font-bold mb-2">Item Name</h3>
-            <p className="text-gray-600 mb-1"><strong>Category:</strong> Electronics</p>
-            <p className="text-gray-600 mb-1"><strong>Owner:</strong> John Doe</p>
-            <p className="text-gray-600 mb-1"><strong>Rating:</strong> 4.5/5</p>
+            <p className="text-gray-600 mb-1">
+              <strong>Category:</strong> Electronics
+            </p>
+            <p className="text-gray-600 mb-1">
+              <strong>Owner:</strong> John Doe
+            </p>
+            <p className="text-gray-600 mb-1">
+              <strong>Rating:</strong> 4.5/5
+            </p>
             <p className="text-gray-700 mt-4">
               <strong>Description:</strong> This is a placeholder description for the item. Add more details about the item here.
             </p>
@@ -61,57 +90,3 @@ export default function ItemSearch() {
     </div>
   );
 }
-
-
-
-/* "use client";
-import { Input } from "@/app/components/Input";
-import RentWaveLogo from "@/app/components/RentWaveLogo";
-import { useFormState, useFormStatus } from "react-dom";
-
-function SubmitButton() {
-	const { pending } = useFormStatus();
-	return (
-		<input
-			className="mb-0"
-			type="submit"
-			value={pending ? "Searching" : "Search"}
-		/>
-	);
-}
-
-function trySearch(state: string, payload: FormData): string | Promise<string> {
-  throw new Error("Function not implemented.");
-}
-
-export default function ItemSearch() {
-  let [error, formAction] = useFormState<string, FormData>(trySearch, "");
-
-  return (
-    <div>
-      <div className="box">
-            
-        <div className="form">
-          <form action={formAction} className="search">
-            <Input
-              label=" "
-              type="text"
-              id="search"
-              name="search"
-              required={true}
-              placeholder="Search"
-            />
-            <SubmitButton />
-            <p> {error} </p>
-          </form>
-        </div>
-      </div>
-
-      <div className="box">
-        <h2>Name</h2>
-        <h2>Category</h2>
-        <h2>Description</h2>
-      </div>
-    </div>
-  );
-} */
