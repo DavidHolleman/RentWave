@@ -3,7 +3,6 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import db from "@/app/Database";
-import { UserInfo } from "os";
 
 export async function tryLogin(state: string, formData: FormData) {
     try {

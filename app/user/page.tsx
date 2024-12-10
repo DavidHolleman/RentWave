@@ -1,7 +1,7 @@
 "use client";
 
 import { useFormStatus } from "react-dom";
-import {getUserRating} from ".././user/user";
+import {getUserRating} from "./UserServe";
 import {getAllItems} from ".././item/ItemServe";
 
 function PasswordButton() {

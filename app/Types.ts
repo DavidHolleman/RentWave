@@ -3,6 +3,8 @@ export function formatDate(date: Date) {
         weekday: "long",
         month: "short",
         day: "numeric",
+        hour: "numeric",
+        minute: "numeric"
     }).format(date);
 }
 

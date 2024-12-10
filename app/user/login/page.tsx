@@ -4,7 +4,7 @@ import { Input } from "@/app/components/Input";
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import RentWaveLogo from "@/app/components/RentWaveLogo";
-import { tryLogin } from "@/app/user/user";
+import { tryLogin } from "@/app/user/UserServe";
  
 function LoginButton() {
 	const { pending } = useFormStatus();

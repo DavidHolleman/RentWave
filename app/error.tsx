@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import ErrorPrompt from "./components/ErrorPrompt";
+import RentWaveLogo from "./components/RentWaveLogo";
 
 export default function Error({
 	error,
@@ -16,12 +17,14 @@ export default function Error({
 	}, [error]);
 
 	return (
-		<div>
+		<div className="box">
+			<RentWaveLogo />
+			<div className="center">
 			<ErrorPrompt
 				code={error.name}
-				details={
-					"An exception occurred on your end! Check your console for details or refresh."
-				}></ErrorPrompt>
+				details={ "An exception occurred on your end! Check your console for details or refresh." }
+			/>
+			</div>
 		</div>
 	);
 }
