@@ -29,3 +29,11 @@ export interface Review {
     Name: string;
     Time: Date;
 }
+
+export interface Rental {
+    Id: number;
+    ItemId: number;
+    Renter: string;
+    Owner: string;
+    State: number;
+}
