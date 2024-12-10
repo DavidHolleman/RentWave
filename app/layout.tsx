@@ -55,10 +55,10 @@ export default function RootLayout({
               name: "Login",
               path: "/user/login"
             });
-            elements.push({
-              name: "Your account",
-              path: "/user"
-            });
+            // elements.push({
+            //   name: "Your account",
+            //   path: "/user"
+            // });
             elements.push({
               name: "Logout",
               path: "/user/logout"
