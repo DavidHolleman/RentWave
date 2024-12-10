@@ -31,8 +31,8 @@ export async function getAllMessages(): Promise<Message[]> {
 
 export async function getAllConversations(): Promise<string[]> {
     const results = await db.query(
-        'select case when renter != ? then renter else owner end as receiver from rentals '+
-        'where Id = (SELECT DISTINCT RentalId FROM `messages`)',
+        'SELECT CASE when renter != ? then renter else owner end as receiver from `rentals` r '+
+        'JOIN (SELECT DISTINCT RentalId FROM `messages`) m ON r.Id = m.RentalId',
         ["dhollema@pnw.edu"]
     );
     const conversations = Array.from(results[0] as any).map((c) => (c as any).receiver as string);

@@ -74,3 +74,18 @@ export async function getUserRating(user: string) {
     );
     return parseFloat((results[0] as any)[0].CumulativeRating);
 }
+
+export async function startRental(state: string, formData: FormData) {
+    try {
+        const results = await db.query(
+          'INSERT INTO `rentals` (`ItemId`, `Renter`, `Owner`) VALUES (?,?,?)',
+          [formData.get("ItemId"), "dhollema@pnw.edu", formData.get("Owner")]
+        );
+        console.log(results);
+        revalidatePath("/message");
+    } catch (e: any) {
+        console.log(e);
+        return (e as Error).message;
+    }
+    redirect(`/`);
+}

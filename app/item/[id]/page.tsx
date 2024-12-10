@@ -2,6 +2,8 @@
 
 import { getUserRating, getSingleItem, getItemReviews } from "../ItemServe";
 import { formatDate } from "@/app/Types";
+import StartRental from "./StartRental";
+
 
 export default async function ItemPage( {params}: { params:{ id:number } } ) {
   let id = (await params).id;
@@ -24,6 +26,7 @@ export default async function ItemPage( {params}: { params:{ id:number } } ) {
         <p style={{ color: "#4b5563", marginBottom: "0.5rem" }}><strong>Rating:</strong> {await getUserRating(item.Owner)}/5</p>
         <p style={{ color: "#374151", marginBottom: "0.5rem" }}><strong>Description:</strong> {item.Description}</p>
       </div>
+      <StartRental itemid={id} owner={item.Owner} />
 
       {reviews.length > 0 &&
       <>
