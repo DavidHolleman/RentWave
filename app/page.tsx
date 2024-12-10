@@ -1,27 +1,11 @@
-"use client";
-import { Input } from "@/app/components/Input";
-import { useActionState } from "react";
-import { useFormStatus } from "react-dom";
+"use server";
+
 import RentWaveLogo from "@/app/components/RentWaveLogo";
+import SearchBar from "@/app/components/SearchBar";
+import { getAllItems, getUserRating } from "./item/ItemServe";
 
-
-function SubmitButton() {
-	const { pending } = useFormStatus();
-	return (
-		<input
-			className="mb-0"
-			type="submit"
-			value={pending ? "Searching" : "Search"}
-		/>
-	);
-}
-
-function trySearch(state: string, payload: FormData): string | Promise<string> {
-  throw new Error("Function not implemented.");
-}
-
-export default function Home() {
-  let [error, formAction] = useActionState<string, FormData>(trySearch, "");
+export default async function Home() {
+  let ItemSet = await getAllItems();
 
   return (
     <div>
@@ -29,27 +13,20 @@ export default function Home() {
         <RentWaveLogo />
         <h1 className="center">RentWave</h1>
         <h2 className="center">A Global Renting Solution</h2>
-            
-        <div className="form">
-          <form action={formAction} className="search">
-            <Input
-              label=" "
-              type="text"
-              id="search"
-              name="search"
-              required={true}
-              placeholder="Search"
-            />
-            <SubmitButton />
-            <p> {error} </p>
-          </form>
-        </div>
+        
+        <SearchBar />
       </div>
 
-      <div className="box">
-        <h2>Item 1</h2>
-        <h2>Item 2</h2>
-        <h2>Item 3</h2>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: "1.5rem", margin: "1.5rem"}}>
+        {await ItemSet.map(async (f) => (
+          <div className="item-card">
+            <h3>{f.Name}</h3>
+            <p><strong>Category:</strong> {f.Category}</p>
+            <p><strong>Owner:</strong> {f.Owner}</p>
+            <p><strong>Rating:</strong> {await getUserRating(f.Owner)}</p>
+            <p><strong>Description:</strong> {f.Description}</p>
+          </div>
+        ))}
       </div>
     </div>
   );

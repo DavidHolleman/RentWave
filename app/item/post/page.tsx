@@ -1,7 +1,7 @@
 "use server";
 
 import RentWaveLogo from "@/app/components/RentWaveLogo";
-import { getCategories } from "@/app/item/category";
+import { getCategories } from "@/app/item/ItemServe";
 import PostItemForm from "./PostForm";
 
 export default async function PostItem() {

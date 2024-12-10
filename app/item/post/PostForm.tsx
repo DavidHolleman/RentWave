@@ -3,7 +3,7 @@
 import { Input, InputBig } from "@/app/components/Input";
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
-import { tryPostItem } from "@/app/item/item";
+import { tryPostItem } from "@/app/item/ItemServe";
 
 function PostItemButton() {
 	const { pending } = useFormStatus();

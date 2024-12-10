@@ -22,6 +22,7 @@ body {
 nav {
   height: 60px;
 }
+
 main {
   height: calc(100vh - 60px);
   overflow-y: auto;
@@ -36,6 +37,41 @@ main {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+.results-section {
+  max-width: 100%;
+  margin-top: 3rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 2rem;
+}
+
+.results-section h2 {
+  font-size: 1.5rem; /* text-2xl */
+  font-weight: 600; /* font-semibold */
+  margin-bottom: 1rem;
+}
+
+.item-card {
+  background-color: #ffffff; /* white */
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb; /* gray-200 */
+}
+
+.item-card h3 {
+  font-size: 1.25rem; /* text-xl */
+  font-weight: 700; /* font-bold */
+  margin-bottom: 0.5rem;
+}
+
+.item-card p {
+  color: #4b5563; /* gray-600 */
+  margin-bottom: 0.25rem;
 }
 
 table {
@@ -93,11 +129,8 @@ table {
   padding: 1rem;
 }
 .boxone {
-  
   max-width:fit-content;
- 
   margin:auto;
-  
 }
 
 .center {
