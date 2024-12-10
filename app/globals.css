@@ -179,6 +179,7 @@ button {
 	font-size: 1rem !important;
   line-height: 1.5rem !important;
 	font-weight: 500 !important;
+  text-wrap: nowrap;
 }
 input, textarea, select {
   border: 0px;

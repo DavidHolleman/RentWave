@@ -5,14 +5,12 @@ import { redirect } from "next/navigation";
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 
-function SubmitButton() {
+function SearchButton() {
 	const { pending } = useFormStatus();
 	return (
-		<input
-			className="mb-0"
-			type="submit"
-			value={pending ? "Searching" : "Search"}
-		/>
+    <button type="submit">
+      {pending ? "Searching..." : "Search"}
+    </button>
 	);
 }
 
@@ -33,7 +31,7 @@ export default function SearchBar() {
               required={true}
               placeholder="Search"
             />
-            <SubmitButton />
+            <SearchButton />
             <p> {error} </p>
           </form>
         </div>

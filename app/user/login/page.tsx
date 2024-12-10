@@ -6,14 +6,12 @@ import { useFormStatus } from "react-dom";
 import RentWaveLogo from "@/app/components/RentWaveLogo";
 import { tryLogin } from "@/app/user/user";
  
-function SubmitButton() {
+function LoginButton() {
 	const { pending } = useFormStatus();
 	return (
-		<input
-			className="mb-0"
-			type="submit"
-			value={pending ? "Singing in" : "Sign in"}
-		/>
+        <button type="submit">
+            {pending ? "Singing in..." : "Sign in"}
+        </button>
 	);
 }
 
@@ -43,7 +41,7 @@ export default function Login() {
                         required={true}
                         placeholder="Enter your Password"
                     />
-                    <SubmitButton />
+                    <LoginButton />
                     <p> {error} </p>
                 </form>
             </div>

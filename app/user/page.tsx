@@ -7,21 +7,17 @@ import {getAllItems} from ".././item/ItemServe";
 function PasswordButton() {
 	const { pending } = useFormStatus();
 	return (
-		<input
-			className="mb-0"
-			type="password"
-			value={pending ? "Please Wait" : "Change Password"}
-		/>
+        <button type="submit">
+            {pending ? "Changing Password..." : "Change Password"}
+        </button>
 	);
 }
 function LocationButton() {
 	const { pending } = useFormStatus();
 	return (
-		<input
-			className="mb-0"
-			type="location"
-			value={pending ? "Please Wait" : "Change Location"}
-		/>
+        <button type="submit">
+            {pending ? "Changing Location..." : "Change Location"}
+        </button>
 	);
 }
 

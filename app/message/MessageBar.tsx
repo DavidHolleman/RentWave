@@ -8,11 +8,9 @@ import { sendMessage } from "@/app/message/MessageServe";
 function SendButton() {
 	const { pending } = useFormStatus();
 	return (
-		<input
-			className="mb-0"
-			type="submit"
-			value={pending ? "Sending message" : "Send message"}
-		/>
+        <button type="submit">
+            {pending ? "Sending message..." : "Send message"}
+        </button>
 	);
 }
 

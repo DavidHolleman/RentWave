@@ -9,11 +9,9 @@ import { FaStar } from 'react-icons/fa'
 function PostReviewButton() {
 	const { pending } = useFormStatus();
 	return (
-		<input
-			className="mb-0"
-			type="submit"
-			value={pending ? "Posting Review..." : "Post Review"}
-		/>
+    <button type="submit">
+      {pending ? "Posting Review..." : "Post Review"}
+    </button>
 	);
 }
 
@@ -22,14 +20,13 @@ function tryPostReview(state: string, payload: FormData): string | Promise<strin
 }
 
 export default function Review() {
-      let [error, formAction] = useActionState<string, FormData>(tryPostReview, "");
-      const colors = {
-            orange: "#FFBA5A",
-            grey: "#a9a9a9"
-            
-        };
+  let [error, formAction] = useActionState<string, FormData>(tryPostReview, "");
+  const colors = {
+    orange: "#FFBA5A",
+    grey: "#a9a9a9"
+  };
 
-      const [currentValue, setCurrentValue] = useState(0);
+  const [currentValue, setCurrentValue] = useState(0);
   const [hoverValue, setHoverValue] = useState(undefined);
   const stars = Array(5).fill(0)
 
@@ -46,7 +43,7 @@ export default function Review() {
   }
 
   return (
-      <div style={styles.container}>
+    <div className="box">
       <h2> Leave a Review </h2>
       <p> Items for you to review, Renters for you to review, and your reviews. </p> 
 
@@ -73,23 +70,13 @@ export default function Review() {
         style={styles.textarea}
       />
 
-      <button
-        style={styles.button}
-      >
-        Submit
-      </button>
-      
+      <PostReviewButton />
     </div>
   );
 };
       
       
 const styles = {
-  container: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center"
-  },
   stars: {
     display: "flex",
     flexDirection: "row",
@@ -108,5 +95,4 @@ const styles = {
     width: 300,
     padding: 10,
   }
-
 };

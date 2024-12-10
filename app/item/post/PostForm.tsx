@@ -8,11 +8,9 @@ import { tryPostItem } from "@/app/item/ItemServe";
 function PostItemButton() {
 	const { pending } = useFormStatus();
 	return (
-		<input
-			className="mb-0"
-			type="submit"
-			value={pending ? "Posting Item..." : "Post Item"}
-		/>
+		<button type="submit">
+            {pending ? "Posting Item..." : "Post Item"}
+        </button>
 	);
 }
 

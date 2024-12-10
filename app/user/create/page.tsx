@@ -6,14 +6,12 @@ import { useFormStatus } from "react-dom";
 import RentWaveLogo from "@/app/components/RentWaveLogo";
 import { tryCreateAccount } from "@/app/user/user";
 
-function SubmitButton() {
+function CreateAccountButton() {
 	const { pending } = useFormStatus();
 	return (
-		<input
-			className="mb-0"
-			type="submit"
-			value={pending ? "Creating Account..." : "Create Account"}
-		/>
+        <button type="submit">
+            {pending ? "Creating Account..." : "Create Account"}
+        </button>
 	);
 }
 
@@ -86,7 +84,7 @@ export default function Create() {
                         name="confirm-password"
                         placeholder="Confirm your Password"
                     />
-                    <SubmitButton />
+                    <CreateAccountButton />
                     <p> {error} </p>
                 </form>
             </div>
