@@ -44,8 +44,7 @@ export default function Review() {
 
   return (
     <div className="box">
-      <h2> Leave a Review </h2>
-      <p> Items for you to review, Renters for you to review, and your reviews. </p> 
+      <h1> Leave a Review </h1>
 
       <div style={styles.stars}>
         {stars.map((_, index) => {
@@ -57,17 +56,17 @@ export default function Review() {
               onMouseOver={() => handleMouseOver(index + 1)}
               onMouseLeave={handleMouseLeave}
               color={(hoverValue || currentValue) > index ? colors.orange : colors.grey}
-              style={{
-                marginRight: 10,
-                cursor: "pointer"
-              }}
+              style={{ marginRight: 10, cursor: "pointer" }}
             />
           )
         })}
       </div>
-      <textarea
-        placeholder="We appreciate your response!"
-        style={styles.textarea}
+
+      <InputBig
+        label=""
+        id="review"
+        name="review"
+        placeholder="Please leave a review!"
       />
 
       <PostReviewButton />
@@ -80,19 +79,7 @@ const styles = {
   stars: {
     display: "flex",
     flexDirection: "row",
+    paddingTop: "1em",
+    paddingBottom: "1em"
   },
-  textarea: {
-    border: "1px solid #a9a9a9",
-    borderRadius: 5,
-    padding: 10,
-    margin: "20px 0",
-    minHeight: 100,
-    width: 300
-  },
-  button: {
-    border: "1px solid #a9a9a9",
-    borderRadius: 5,
-    width: 300,
-    padding: 10,
-  }
 };

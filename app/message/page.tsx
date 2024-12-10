@@ -1,16 +1,22 @@
 "use sever";
 
-import { getAllMessages } from "@/app/message/MessageServe";
+import { getAllConversations, getAllMessages } from "@/app/message/MessageServe";
 import MessageBar from "./MessageBar";
 import { formatDate } from "@/app/Types";
 
 export default async function Message() {
       let ItemSet = await getAllMessages();
+      let Conversations = await getAllConversations();
 
       return (
             <div className="fillwidth">
                   <div className="leftcolumn">
-                        <div className="person">
+                        {Conversations.map((f:string) => (
+                              <div className="person">
+                                    <div className="stack" key={f}> {f} </div>
+                              </div>
+                        ))}
+                        {/* <div className="person">
                               <div className="stack"> <p>Item 1</p> </div>
                               <div className="stack"> <p>Person 1</p> </div>
                         </div>
@@ -21,7 +27,7 @@ export default async function Message() {
                         <div className="person">
                               <div className="stack"> <p>Item 3</p> </div>
                               <div className="stack"> <p>Person 3</p> </div>
-                        </div>
+                        </div> */}
                   </div>
                   
                   <div className="rightcolumn">
@@ -37,7 +43,6 @@ export default async function Message() {
                               ))}
                         </div>
                         
-
                         <MessageBar />
                   </div>
             </div>

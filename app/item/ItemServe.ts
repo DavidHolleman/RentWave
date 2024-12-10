@@ -66,7 +66,7 @@ export async function getItemReviews(param: number): Promise<Review[]> {
     return (reviews);
 }
 
-export async function getUserRating(user:number) {
+export async function getUserRating(user: string) {
     const results = await db.query(
         'select AVG(re.rating) as CumulativeRating from reviews re join rentals rt on re.rentalId = rt.Id '+
         'where (case when rt.renter != re.author then rt.renter else rt.owner end) = ?',
